@@ -70,6 +70,10 @@ const filmeController = {
             cover: req.body.cover,
         };
 
+        if (!filme.name || !filme.year || !filme.description) {
+            return res.status(400).json({ message: 'Todos os campos são obrigatórios para a atualização completa.' });
+        }
+
         const updatedFilme = await FilmeModel.findByIdAndUpdate(id, filme);
 
         if (!updatedFilme) {
@@ -78,8 +82,22 @@ const filmeController = {
         }
 
         res.status(200).json({ updatedFilme, msg: "Filme atualizado com sucesso!" });
+    },
+    patch: async (req, res) => {
+        try {
+            const filmeId = req.params.id;
+            const updatedFilme = req.body;
 
+            const filme = await FilmeModel.findByIdAndUpdate(filmeId, updatedFilme);
 
+            if (!filme) {
+                res.status(404).json({ msg: "Filme não encontrado" });
+                return;
+            }
+
+        } catch (error) {
+            res.status(500).json({ msg: "Erro ao atualizar filme" });
+        }
     }
 }
 module.exports = filmeController;

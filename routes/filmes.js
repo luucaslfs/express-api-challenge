@@ -22,5 +22,8 @@ router
     .route("/filmes/:id")
     .put((req, res) => filmeController.update(req, res));
 
+router
+    .route("/filmes/:id")
+    .patch((req, res) => filmeController.patch(req, res));
 
 module.exports = router;
