@@ -20,6 +20,29 @@ const filmeController = {
             console.log(error);
         }
     },
-};
+    getAll: async (req, res) => {
+        try {
+            const filmes = await FilmeModel.find();
+
+            res.json(filmes);
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    getById: async (req, res) => {
+        try {
+            const id = req.params.id;
+            const filme = await FilmeModel.findById(id);
+
+            if (!filme) {
+                res.status(404).json({ msg: "Filme não encontrado" });
+                return;
+            }
+
+            res.json(filme);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
 module.exports = filmeController;
