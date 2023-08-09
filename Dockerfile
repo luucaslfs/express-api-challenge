@@ -1,8 +1,8 @@
-FROM node:14
+FROM node:19
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package*.json yarn.lock ./
 RUN npm install
 COPY . .
 
