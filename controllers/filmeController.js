@@ -43,6 +43,21 @@ const filmeController = {
         } catch (error) {
             console.log(error);
         }
-    }
+    },
+    delete: async (req, res) => {
+        try {
+            const id = req.params.id;
+            const deletedFilme = await FilmeModel.findByIdAndDelete(id);
 
+            if (!deletedFilme) {
+                res.status(404).json({ msg: "Filme não encontrado" });
+                return;
+            }
+
+            res.status(200).json({ deletedFilme, msg: "Filme deletado com sucesso!" });
+        } catch (error) {
+            console.log(error);
+        }
+    },
+}
 module.exports = filmeController;
