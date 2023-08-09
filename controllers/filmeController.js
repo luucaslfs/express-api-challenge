@@ -60,7 +60,6 @@ const filmeController = {
         }
     },
     update: async (req, res) => {
-
         const id = req.params.id;
 
         const filme = {
@@ -94,6 +93,8 @@ const filmeController = {
                 res.status(404).json({ msg: "Filme não encontrado" });
                 return;
             }
+
+            res.status(200).json({ updatedFilme, msg: "Filme atualizado com sucesso!" });
 
         } catch (error) {
             res.status(500).json({ msg: "Erro ao atualizar filme" });
