@@ -59,5 +59,27 @@ const filmeController = {
             console.log(error);
         }
     },
+    update: async (req, res) => {
+
+        const id = req.params.id;
+
+        const filme = {
+            name: req.body.name,
+            description: req.body.description,
+            year: req.body.year,
+            cover: req.body.cover,
+        };
+
+        const updatedFilme = await FilmeModel.findByIdAndUpdate(id, filme);
+
+        if (!updatedFilme) {
+            res.status(404).json({ msg: "Filme não encontrado" });
+            return;
+        }
+
+        res.status(200).json({ updatedFilme, msg: "Filme atualizado com sucesso!" });
+
+
+    }
 }
 module.exports = filmeController;

@@ -18,5 +18,9 @@ router
     .route("/filmes/:id")
     .delete((req, res) => filmeController.delete(req, res));
 
+router
+    .route("/filmes/:id")
+    .put((req, res) => filmeController.update(req, res));
+
 
 module.exports = router;
