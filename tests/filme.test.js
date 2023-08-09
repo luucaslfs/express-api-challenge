@@ -1,15 +1,9 @@
 const request = require('supertest');
-const app = require('../app'); // Adjust the path to your Express app
-
-describe('Sample Test', () => {
-    it('should test that true === true', () => {
-        expect(true).toBe(true)
-    })
-})
+const app = require('../app'); 
 
 describe('Filmes API', () => {
   it('should get all filmes', async () => {
-    const response = await request(app).get('/filmes');
+    const response = await request(app).get('/api/filmes');
     expect(response.status).toBe(200);
     expect(response.body).toBeInstanceOf(Array);
   });
@@ -22,9 +16,9 @@ describe('Filmes API', () => {
       cover: 'url_of_cover'
     };
 
-    const response = await request(app).post('/filmes').send(newFilme);
+    const response = await request(app).post('/api/filmes').send(newFilme);
     expect(response.status).toBe(201);
-    expect(response.body.name).toBe('New Movie');
+    expect(response.body.response.name).toBe('New Movie');
   });
 
   // Add more test cases for other endpoints (GET by ID, PATCH, PUT, DELETE)
