@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 async function main() {
     try {
         await mongoose.connect(
-            "mongodb://lfs:cin123@localhost:27017/"
+            "mongodb://lfs:cin123@mongodb:27017/"
         );
 
         console.log("Connected to Database!")

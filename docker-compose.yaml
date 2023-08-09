@@ -3,7 +3,7 @@ version: '3.7'
 services:
   mongodb:
     image: mongo
-    container_name: mongodb
+    container_name: mongodb-container
     ports:
       - "27017:27017"
     volumes:
@@ -11,6 +11,16 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: lfs
       MONGO_INITDB_ROOT_PASSWORD: cin123
+  
+  express-app:
+    build:
+      context: . 
+      dockerfile: Dockerfile
+    container_name: express-app-container
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
 
 volumes:
   mongodb_data:
