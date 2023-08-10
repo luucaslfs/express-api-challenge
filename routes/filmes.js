@@ -1,10 +1,11 @@
 const router = require('express').Router();
 
+const verifyToken = require('../middlewares/verifyToken');
 const filmeController = require('../controllers/filmeController');
 
 router
     .route("/filmes")
-    .post((req, res) => filmeController.create(req, res));
+    .post(verifyToken, (req, res) => filmeController.create(req, res));
 
 router
     .route("/filmes")
