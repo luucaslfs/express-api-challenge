@@ -6,6 +6,10 @@ const userController = {
   create: async (req, res) => {
     try {
       const { username, password } = req.body;
+
+      if (!username) {
+        return res.status(422).json({ message: "Username is required." });
+      }
       const salt = await bcrypt.genSalt(11);
       const hashedPassword = await bcrypt.hash(password, salt);
       const user = await UserModel.create({
@@ -33,9 +37,8 @@ const userController = {
         return res.status(422).json({ message: "Invalid credentials." });
       }
 
-      const token = jwt.sign({ userId: user._id }, "your-secret-key", {
-        expiresIn: "1h",
-      });
+      const secret = process.env.SECRET;
+      const token = jwt.sign({ userId: user._id }, secret, { expiresIn: "1h" });
 
       res.status(200).json({ token, msg: "Authentication successful!" });
     } catch (error) {
