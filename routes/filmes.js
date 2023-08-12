@@ -2,6 +2,8 @@ const router = require('express').Router();
 
 const verifyToken = require('../middlewares/verifyToken');
 const filmeController = require('../controllers/filmeController');
+const commentController = require('../controllers/commentController');
+
 
 router
     .route("/filmes")
@@ -26,5 +28,11 @@ router
 router
     .route("/filmes/:id")
     .patch((req, res) => filmeController.patch(req, res));
+
+
+    // Rota para criar um comentário em um filme
+router
+    .route("/filmes/:id/comments")
+    .post(verifyToken, (req, res) => commentController.create(req, res));
 
 module.exports = router;
