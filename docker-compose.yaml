@@ -11,6 +11,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: lfs
       MONGO_INITDB_ROOT_PASSWORD: cin123
+      MONGO_INITDB_DATABASE: databaseProd
   
   express-app:
     build:
