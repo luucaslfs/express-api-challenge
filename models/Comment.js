@@ -2,30 +2,29 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-const commentSchema = new Schema({
+const commentSchema = new Schema(
+  {
     user: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-        required: true
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
-    filme: {
-        type: Schema.Types.ObjectId,
-        ref: "Filme",
-        required: true
+    content: {
+      type: Schema.Types.ObjectId,
+      ref: "Content",
+      required: true,
     },
     text: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    }
-});
+  },
+  { timestamps: true }
+);
 
 const Comment = mongoose.model("Comment", commentSchema);
 
-module.exports = { 
-    Comment, 
-    commentSchema,
+module.exports = {
+  Comment,
+  commentSchema,
 };
