@@ -9,6 +9,10 @@ router
   .post(verifyToken, contentController.create)
   .get(contentController.getAll);
 
+router.route("/contents/filmes").get(contentController.getAllMovies);
+
+router.route("/contents/series").get(contentController.getAllSeries);
+
 router
   .route("/contents/:id")
   .get(contentController.getById)

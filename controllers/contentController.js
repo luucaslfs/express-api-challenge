@@ -30,6 +30,26 @@ const contentController = {
     }
   },
 
+  getAllMovies: async (req, res) => {
+    try {
+      const movies = await ContentModel.find({ type: "Filme" });
+      res.json(movies);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ msg: "Erro ao buscar filmes" });
+    }
+  },
+
+  getAllSeries: async (req, res) => {
+    try {
+      const series = await ContentModel.find({ type: "Serie" });
+      res.json(series);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ msg: "Erro ao buscar séries" });
+    }
+  },
+
   getById: async (req, res) => {
     try {
       const id = req.params.id;
