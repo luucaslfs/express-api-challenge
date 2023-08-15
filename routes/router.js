@@ -1,15 +1,14 @@
 const router = require("express").Router();
 
-// Filmes routes
+// calling routes
 const filmesRouter = require("./filmes");
-
-// Series routes
 const seriesRouter = require("./series");
-
 const userRouter = require("./users");
+const contentRouter = require("./contents");
 
 router.use("/", filmesRouter);
 router.use("/", seriesRouter);
 router.use("/", userRouter);
+router.use("/", contentRouter);
 
 module.exports = router;
