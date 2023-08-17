@@ -23,7 +23,6 @@ const ratingController = {
         .status(201)
         .json({ newRating, msg: "Classificação criada com sucesso!" });
     } catch (error) {
-      console.log(error);
       res.status(500).json({ msg: "Erro ao classificar." });
     }
   },

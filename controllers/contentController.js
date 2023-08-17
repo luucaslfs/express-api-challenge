@@ -15,7 +15,6 @@ const contentController = {
       const response = await ContentModel.create(contentData);
       res.status(201).json({ response, msg: "Conteúdo criado com sucesso!" });
     } catch (error) {
-      console.log(error);
       res.status(500).json({ msg: "Erro ao criar conteúdo" });
     }
   },
@@ -25,7 +24,6 @@ const contentController = {
       const contents = await ContentModel.find();
       res.json(contents);
     } catch (error) {
-      console.log(error);
       res.status(500).json({ msg: "Erro ao buscar conteúdos" });
     }
   },
@@ -35,7 +33,6 @@ const contentController = {
       const movies = await ContentModel.find({ type: "Filme" });
       res.json(movies);
     } catch (error) {
-      console.log(error);
       res.status(500).json({ msg: "Erro ao buscar filmes" });
     }
   },
@@ -45,7 +42,6 @@ const contentController = {
       const series = await ContentModel.find({ type: "Serie" });
       res.json(series);
     } catch (error) {
-      console.log(error);
       res.status(500).json({ msg: "Erro ao buscar séries" });
     }
   },
@@ -62,7 +58,6 @@ const contentController = {
 
       res.json(content);
     } catch (error) {
-      console.log(error);
       res.status(500).json({ msg: "Erro ao buscar conteúdo" });
     }
   },
@@ -81,7 +76,6 @@ const contentController = {
         .status(200)
         .json({ deletedContent, msg: "Conteúdo deletado com sucesso!" });
     } catch (error) {
-      console.log(error);
       res.status(500).json({ msg: "Erro ao deletar conteúdo" });
     }
   },
@@ -118,7 +112,6 @@ const contentController = {
         .status(200)
         .json({ updatedContent, msg: "Conteúdo atualizado com sucesso!" });
     } catch (error) {
-      console.log(error);
       res.status(500).json({ msg: "Erro ao atualizar conteúdo" });
     }
   },
@@ -142,7 +135,6 @@ const contentController = {
         .status(200)
         .json({ updatedContent, msg: "Conteúdo atualizado com sucesso!" });
     } catch (error) {
-      console.log(error);
       res.status(500).json({ msg: "Erro ao atualizar conteúdo" });
     }
   },

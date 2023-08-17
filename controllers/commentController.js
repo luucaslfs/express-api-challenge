@@ -20,7 +20,6 @@ const commentController = {
         .status(201)
         .json({ newComment, msg: "Comentário criado com sucesso!" });
     } catch (error) {
-      console.log(error);
       res.status(500).json({ msg: "Erro ao criar comentário." });
     }
   },
@@ -31,7 +30,6 @@ const commentController = {
       }).populate("user", "username"); // populate() is used to get the user's username
       res.status(200).json(comments);
     } catch (error) {
-      console.log(error);
       res.status(500).json({ msg: "Erro ao buscar comentários." });
     }
   },
