@@ -13,7 +13,7 @@
     "supertest": "^6.3.3"
   },
   "name": "express-api-challenge",
-  "description": "An Express.JS challenge made for the Software Engineering Discipline at Information Systems B.Sc. in UFPE",
+  "description": "An Express.JS API made for the Software Engineering Discipline at Information Systems B.Sc. in UFPE",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
